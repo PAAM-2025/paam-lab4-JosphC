@@ -140,6 +140,7 @@ class MainActivity : ComponentActivity() {
     private fun setChiuitText(resultText: String?) {
         if(resultText !== null) {
             // TODO 1: Instantiate a new chiuit object then delegate the addition to the [viewModel].
+            viewModel.addChiuit(resultText)
         }
     }
 
