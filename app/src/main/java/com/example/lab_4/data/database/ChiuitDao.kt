@@ -17,5 +17,7 @@ interface ChiuitDao {
     fun insert(chiuit: ChiuitEntity)
 
     // TODO 6: Define the delete operation.
+    @Query("DELETE FROM chiuits WHERE timestamp = :timestamp")
+    fun delete(timestamp: Long)
 
 }

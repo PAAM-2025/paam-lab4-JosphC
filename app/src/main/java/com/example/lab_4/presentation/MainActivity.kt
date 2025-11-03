@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.material3.Button
@@ -95,7 +96,7 @@ class MainActivity : ComponentActivity() {
                 )
                 Button(
                     modifier = Modifier
-                        .weight(0.2f)
+                        .weight(0.3f)
                         .padding(8.dp),
                     onClick = { shareChiuit(chiuit.description) }) {
                     Icon(
@@ -103,8 +104,18 @@ class MainActivity : ComponentActivity() {
                         stringResource(R.string.send_action_icon_content_description)
                     )
                 }
+                // TODO 4: Add a new button that has the purpose to delete a chiuit.
+                Button(
+                    modifier = Modifier
+                        .weight(0.3f)
+                        .padding(8.dp),
+                    onClick = { deleteChiuit(chiuit) }) {
+                    Icon(
+                        Icons.Filled.Delete,
+                        stringResource(R.string.delete_action_icon_content_description)
+                    )
+                }
             }
-            // TODO 4: Add a new button that has the purpose to delete a chiuit.
         }
     }
 
@@ -123,6 +134,13 @@ class MainActivity : ComponentActivity() {
         val intentChooser = Intent.createChooser(sendIntent, "")
 
         startActivity(intentChooser)
+    }
+
+    /*
+    Deletes a chiuit from the list by delegating to the viewModel.
+     */
+    private fun deleteChiuit(chiuit: Chiuit) {
+        viewModel.removeChiuit(chiuit)
     }
 
     /*
